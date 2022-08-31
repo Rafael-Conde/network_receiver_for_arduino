@@ -1,4 +1,4 @@
-use std::{net::{TcpListener, SocketAddr, IpAddr}, io::{Read,Error}};
+use std::{net::{TcpListener, SocketAddr, IpAddr}, io::Read};
 
 fn main()
 {

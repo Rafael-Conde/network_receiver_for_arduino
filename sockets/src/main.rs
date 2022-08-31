@@ -1,5 +1,5 @@
 use std::io::{stdin, Error, Read};
-use std::net::{IpAddr, Ipv4Addr, SocketAddr, TcpListener};
+use std::net::{IpAddr, SocketAddr, TcpListener};
 
 fn main() -> Result<(), Error>
 {

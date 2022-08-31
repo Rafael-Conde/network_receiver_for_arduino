@@ -1,9 +1,12 @@
-use upnp_rs::ssdp::search::*;
-use upnp_rs::SpecVersion;
+
+use upnp_rs::{SpecVersion, discovery::search::{SearchTarget, Options, search_once}};
+
+
+
 fn main()
 {
 	let mut options = Options::default_for(SpecVersion::V10);
-	options.search_target = SearchTarget::RootDevices;
+	options.search_target = SearchTarget::RootDevice;
 
 	match search_once(options)
 	{
