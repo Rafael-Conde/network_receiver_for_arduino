@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 
-pcp = { path = "../pcp-rs" }
+upnp-rs = "0.2.0"
 
