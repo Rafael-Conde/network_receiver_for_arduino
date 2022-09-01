@@ -6,7 +6,7 @@ fn main()
 {
 	match igd::search_gateway(Default::default())
 	{
-		Err(ref err) => println!("Error: {}", err),
+		Err(ref err) => println!("Error while Searching gateway: {}", err),
 		Ok(gateway) =>
 		{
 			let local_addr = match std::env::args().nth(1)
@@ -21,7 +21,7 @@ fn main()
 			                       igd::PortMappingProtocol::TCP,
 			                       50000,
 			                       local_addr,
-			                       60,
+			                       20,
 			                       "add_port example",
 			)
 			{
@@ -32,15 +32,16 @@ fn main()
 				Ok(()) =>
 				{
 					println!("It worked");
-					let loopback = "192.168.1.102".trim() //"::".trim()
-					                              .parse::<IpAddr>()
-					                              .expect("Error while parsing the address");
-					let port: u16 = 50000;
-					let socket = SocketAddr::new(loopback, port);
-					let listener = TcpListener::bind(socket).unwrap();
+					// let loopback = "192.168.1.102".trim() //"::".trim()
+					//                               .parse::<IpAddr>()
+					//                               .expect("Error while parsing the address");
+					// let port: u16 = 50000;
+					// let socket = SocketAddr::new(local_addr, port);
+                    // let socket = SocketAddr::new("192.168.15.10".parse::<IpAddr>().unwrap(), port);
+					let listener = TcpListener::bind(local_addr).unwrap();
 					println!(
 					         "Listening on {}, access this port to end the program",
-					         socket
+					         local_addr
 					);
 
 					let (mut tcp_stream, addr) = listener.accept().unwrap(); //block  until requested
