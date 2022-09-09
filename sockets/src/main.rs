@@ -17,11 +17,10 @@ fn main()
 	{
 		Err(t) =>
 		{
-			println!("{}", t);
-			panic!();
+			println!("Error while searching for the gateway: {}", t);
+			std::process::exit(1);
 		}
 		Ok(tcp) => tcp,
-
 	};
 	let (mut tcp_stream, _) = match listener.accept()
 	{
