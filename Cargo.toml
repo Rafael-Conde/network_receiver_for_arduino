@@ -1,4 +1,5 @@
 [workspace]
 
-members = [ "sockets","pcp-rs" ]
+members = [ "sockets" ]
+
 
