@@ -6,6 +6,7 @@
 
 use super::*;
 
+// const NO_PORTS: &str = "There are no available ports!!!";
 pub fn start_communication()
 {
 	let ports = serialport::available_ports().expect("No ports found!");
@@ -31,17 +32,16 @@ pub fn start_communication()
 		open_port.set_timeout(Duration::from_secs(2)).unwrap();
 		loop
 		{
-			//now thew only change needed it's to implement writing to the 
-			//port instead of reading from it
-			if let Ok(_num_of_bytes_read) = open_port.read(serial_buf.as_mut_slice())
-			{
-				print!("{}",match std::str::from_utf8(serial_buf.as_mut_slice())
-					   {
-						   Ok(strin) => strin,
-						   Err(error) =>"",
-					   })
-			};
-		}
+			// This functio shouldn't have this loop, intead
+			// it should return the com port that's connected to
+			// and we could consider returning a String buffer too
+			print!("{}",match std::str::from_utf8(serial_buf.as_mut_slice())
+				   {
+					   Ok(strin) => strin,
+					   Err(error) =>"",
+				   })
+		};
 	}
 }
+
 
