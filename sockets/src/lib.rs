@@ -5,6 +5,8 @@
         clippy::unwrap_used,
         clippy::expect_used)]
 
+pub mod serial_communication;
+
 pub use igd::PortMappingProtocol;
 use std::net::{SocketAddrV4, TcpListener};
 use std::time::Duration;
